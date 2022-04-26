@@ -4,26 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>뷰 기초 익히기</title>
+    <title>basic vue</title>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
     <div id="app">
-        <form v-on:submit.prevent="submit()">
-            <input type="text"><br>
-            <button type="submit">Submit</button>
-        </form>
+        {{ val }}
+        <button @click="changeVal">Click</button>
+    </div>
+    <div id="app-1">
+        {{ val }}
+        <button @click="changeVal">Click</button>
     </div>
     <script>
-        new Vue({
+        const app1 = new Vue({
             el: '#app',
             data: {
-                year: 2018
+                val: 'value1'
             },
             methods: {
-                submit(){
-                    alert('submitted');
-                    console.log('log');
+                changeVal(){
+                    app2.val = 'value1 updated'
+                }
+            }
+        })
+
+        const app2 = new Vue({
+            el: '#app-1',
+            data: {
+                val: 'value2'
+            },
+            methods: {
+                changeVal(){
+                    this.val = 'value2 updated'
                 }
             }
         })
